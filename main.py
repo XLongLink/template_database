@@ -1,17 +1,8 @@
-
-from alembic.config import Config
-from alembic import command
-
-
-def upgrade_database_to_latest():
-    # Specify the path to your Alembic configuration file
-    alembic_cfg = Config("alembic.ini")
-    
-    try:
-        command.check(alembic_cfg)
-    except Exception as e:
-        command.revision(alembic_cfg, autogenerate=True)
-        command.upgrade(alembic_cfg, "head")
+from models import Database
 
 if __name__ == "__main__":
-    upgrade_database_to_latest()
+    database_url = "sqlite:///test.db"
+    db = Database(database_url)
+    db.make_migrations()
+    engine = db.get_engine()
+    print("Migrations created successfully!")
