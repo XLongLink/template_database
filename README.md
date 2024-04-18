@@ -1,5 +1,8 @@
 # Database
 
+> [!WARNING]  
+> This is still in prototype mode, many things could not work as intended
+
 This is a template for a project with a database. The project uses `sqlmodel` to automatically handle the orm and the database connection.
 The database migrtion is handled by `alembic`, and all the commit messages are.
 
